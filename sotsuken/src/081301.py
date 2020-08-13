@@ -72,7 +72,7 @@ other = round(black_area / pixcel_size * 100, 1)
 
 #結果を出力
 cv2.imwrite("C:\\Users\\deros\\Documents\\sotsuken\\img\\" + now.strftime('%Y%m%d_%H') + "mask.png", green_mask)
-cv2.imwrite("C:\\Users\\deros\\Documents\\sotsuken\\\img\\" + now.strftime('%Y%m%d_%H') + "masked.png", green_masked_img)
+cv2.imwrite("C:\\Users\\deros\\Documents\\sotsuken\\img\\" + now.strftime('%Y%m%d_%H') + "masked.png", green_masked_img)
 print(" 植物の割合 = " + str(plane) + " % ")
 print(" 　土の割合 = " + str(other) + " % ")
 
