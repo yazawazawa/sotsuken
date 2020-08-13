@@ -67,13 +67,13 @@ white_area = cv2.countNonZero(green_mask)
 black_area = pixcel_size - white_area
 
 #割合計算
-plane = round(white_area / pixcel_size * 100, 1) 
+plant = round(white_area / pixcel_size * 100, 1) 
 other = round(black_area / pixcel_size * 100, 1) 
 
 #結果を出力
 cv2.imwrite("C:\\Users\\deros\\Documents\\sotsuken\\img\\" + now.strftime('%Y%m%d_%H') + "mask.png", green_mask)
 cv2.imwrite("C:\\Users\\deros\\Documents\\sotsuken\\img\\" + now.strftime('%Y%m%d_%H') + "masked.png", green_masked_img)
-print(" 植物の割合 = " + str(plane) + " % ")
+print(" 植物の割合 = " + str(plant) + " % ")
 print(" 　土の割合 = " + str(other) + " % ")
 
 
