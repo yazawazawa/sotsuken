@@ -3,6 +3,10 @@
 #-*- coding:utf-8 -*-
 import cv2
 import numpy as np
+import datetime
+import time
+
+now = datetime.datetime.now()
 
 def detect_green_color(img):
     #HSV色空間に変換
@@ -37,15 +41,16 @@ while(True):
         break
     # sが押された場合は保存する
     if key == ord('s'):
-        img = "C:\\Users\\deros\\Documents\\sotsuken\\photo.png"
+        #img = "C:\\Users\\deros\\Documents\\sotsuken\\photo.png"
+        img = "C:\\Users\\deros\\Documents\\sotsuken\\img\\" + now.strftime('%Y%m%d_%H') +".png"
         cv2.imwrite(img,frame)
 
 # キャプチャの後始末と，ウィンドウをすべて消す
 cap.release()
 cv2.destroyAllWindows()
 #画像の読み込み
-img = cv2.imread("C:\\Users\\deros\\Documents\\sotsuken\\photo.png")
-height, width, ch = img.shape
+img = cv2.imread("C:\\Users\\deros\\Documents\\sotsuken\\img\\" + now.strftime('%Y%m%d_%H') +".png")
+height, width, ch = 640,480,3
 
 #色検出
 green_mask, green_masked_img = detect_green_color(img)
@@ -66,8 +71,10 @@ plane = round(white_area / pixcel_size * 100, 1)
 other = round(black_area / pixcel_size * 100, 1) 
 
 #結果を出力
-cv2.imwrite("C:\\Users\\deros\\Documents\\sotsuken\\green_mask2.png", green_mask)
-cv2.imwrite("C:\\Users\\deros\\Documents\\sotsuken\\green_masked_img2.png", green_masked_img)
+cv2.imwrite("C:\\Users\\deros\\Documents\\sotsuken\\img\\" + now.strftime('%Y%m%d_%H') + "mask.png", green_mask)
+cv2.imwrite("C:\\Users\\deros\\Documents\\sotsuken\\\img\\" + now.strftime('%Y%m%d_%H') + "masked.png", green_masked_img)
 print(" 植物の割合 = " + str(plane) + " % ")
 print(" 　土の割合 = " + str(other) + " % ")
+
+
 
